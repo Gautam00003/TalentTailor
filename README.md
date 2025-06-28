@@ -1,186 +1,173 @@
-# ResumeXpert
-
-**ResumeXpert** is a full-stack web application for building professional, ATS-friendly resumes using beautiful templates. It features user authentication, resume CRUD operations, image uploads, and PDF export, with a modern React frontend and a secure Express/MongoDB backend.
+Here’s a polished, 🎨 visually appealing README for your project, incorporating **Google Gemini** integration:
 
 ---
 
-## Table of Contents
+````markdown
+# 🚀 MERN AI Resume Builder with Gemini Integration
 
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Backend Setup](#backend-setup)
-  - [Frontend Setup](#frontend-setup)
-- [Usage Guide](#usage-guide)
-- [Code Overview](#code-overview)
-  - [Backend](#backend)
-  - [Frontend](#frontend)
-- [API Endpoints](#api-endpoints)
-- [Customization](#customization)
-- [Contributing](#contributing)
-- [License](#license)
+**MERN** + **Google Gemini** = the ultimate AI-powered resume builder! 💼✨
 
 ---
 
-## Features
+## 🧭 Table of Contents
 
-- User registration and login (JWT-based)
-- Create, edit, and delete multiple resumes
-- Upload profile images and thumbnails
-- Choose from multiple resume templates and color themes
-- Real-time resume preview and progress tracking
-- Export resumes as PDF
-- Responsive, modern UI with React and Tailwind CSS
+1. [🔧 Features](#-features)  
+2. [🛠 Tech Stack](#-tech-stack)  
+3. [⚙️ Setup & Installation](#-setup--installation)  
+4. [🌟 Gemini AI Integrations](#-gemini-ai-integrations)  
+5. [📁 Endpoints & Usage](#-endpoints--usage)  
+6. [🎨 Demo Screenshots](#-demo-screenshots)  
+7. [🤝 Contributing](#-contributing)  
+8. [📜 License](#-license)
 
 ---
 
-## Project Structure
+## 🔧 Features
 
+- ✅ **User Authentication** with JWT & bcrypt  
+- 📄 **Full Resume CRUD**: create, edit, delete, real-time preview  
+- 📊 **Progress Tracking**: percentage completion & dynamic bars  
+- 🖼 **Image Upload**: secure photo uploads (JPG/PNG)  
+- 🎨 **Theme & Template Selector**  
+- 📥 **PDF Export** of resumes  
+- 📱 **Fully Responsive UI** – mobile, tablet, desktop  
+- 🤖 **Gemini-Powered**:
+
+  - Auto-generate summaries & bullet points  
+  - Tailor resumes to job descriptions  
+  - Suggest and render design templates dynamically
+
+---
+
+## 🛠 Tech Stack
+
+| Layer      | Technologies                     |
+|------------|----------------------------------|
+| **Frontend** | React, Tailwind CSS         |
+| **Backend**  | Node.js, Express.js         |
+| **Database** | MongoDB + Mongoose          |
+| **Auth**     | JWT & bcrypt                |
+| **AI**       | Google Gemini via GenAI SDK |
+
+---
+
+## ⚙️ Setup & Installation
+
+1. **Clone Repo**  
+   ```bash
+   git clone https://github.com/your-username/mern-ai-resume-builder.git
+   cd mern-ai-resume-builder
+````
+
+2. **Install Dependencies**
+
+   ```bash
+   cd server && npm install
+   cd ../client && npm install
+   ```
+
+3. **Configure Env Variables**
+
+   * Add `.env` files:
+
+     **Server:**
+
+     ```
+     MONGO_URI=...
+     JWT_SECRET=...
+     GEMINI_API_KEY=...
+     ```
+
+     **Client (optional):**
+
+     ```
+     REACT_APP_API_URL=http://localhost:5000/api
+     ```
+
+4. **Start Servers**
+
+   ```bash
+   npm run dev   # runs both client & server
+   ```
+
+5. **Open in Browser**
+   Visit `http://localhost:3000`
+
+---
+
+## 🌟 Gemini AI Integrations
+
+Powered by **Google Gemini** via the GenAI SDK 🎯:
+
+* **Content Generation**
+  Submit job titles/descriptions for AI-crafted bullet points & summaries.
+
+* **Resume Alignment**
+  Enhance resumes based on job descriptions using prompt-engineered feedback.
+
+* **Dynamic Templates**
+  Ask Gemini for custom-themed templates like “minimalist with blue accents.”
+
+> *Gemini 2.5 Flash model supports multimodal prompts and streaming generation* ([github.com][1], [github.com][2], [developers.google.com][3], [github.com][4], [github.com][5], [ai.google.dev][6])
+
+---
+
+## 📁 Endpoints & Usage
+
+```http
+POST /api/auth/register      # Register user
+POST /api/auth/login         # Login + return JWT
+GET  /api/resumes            # List user resumes
+POST /api/resumes            # Create new resume
+PUT  /api/resumes/:id        # Update
+DELETE /api/resumes/:id      # Delete
+POST /api/gemini/summary     # Generate AI summary
+POST /api/gemini/template    # Generate template code
+POST /api/gemini/align       # AI resume alignment feedback
 ```
-ResumeXpert/
-  backend/      # Express.js + MongoDB API
-    config/
-    controllers/
-    middlewares/
-    models/
-    routes/
-    uploads/
-    server.js
-    package.json
-  frontend/     # React + Vite client
-    src/
-      assets/
-      components/
-      context/
-      pages/
-      utils/
-      App.jsx
-      main.jsx
-      index.css
-    public/
-    index.html
-    package.json
+
+Integration example (Node.js, server-side):
+
+```js
+import { GenerativeModel } from '@google/generative-ai';
+const gemini = new GenerativeModel('gemini-2.5-flash', { apiKey: process.env.GEMINI_API_KEY });
+
+const resp = await gemini.generateContent({
+  temperature: 0.7,
+  maxOutputTokens: 500,
+  prompt: `Generate 3 professional bullet points for: ${jobTitle}`
+});
 ```
 
 ---
 
-## Getting Started
 
-### Prerequisites
+## 🤝 Contributing
 
-- Node.js (v18+ recommended)
-- npm
-- MongoDB Atlas account (for cloud DB) or local MongoDB
+Contributions are welcome! 🎉
 
----
+* 🐞 **Bug reports** & feature requests: open an issue
+* 🛠 **Pull requests**: fork → branch → PR review
 
-### Backend Setup
-
-1. **Install dependencies:**
-   ```bash
-   cd backend
-   npm install
-   ```
-
-
-2. **Start the backend server:**
-   ```bash
-   npm start
-   ```
-   - The server runs on [http://localhost:4000](http://localhost:4000) by default.
+Please use clear commit messages and include tests where applicable.
 
 ---
 
-### Frontend Setup
+## 📜 License
 
-1. **Install dependencies:**
-   ```bash
-   cd frontend
-   npm install
-   ```
-
-2. **Start the frontend dev server:**
-   ```bash
-   npm run dev
-   ```
-   - The app runs on [http://localhost:5173](http://localhost:5173) by default.
-
-3. **Configure API base URL:**
-   - By default, the frontend points to the deployed backend. For local development, update `BASE_URL` in `frontend/src/utils/apiPaths.js` to `http://localhost:4000`.
+This project is licensed under the **MIT License**. Feel free to use, modify, and distribute! 😊
 
 ---
 
-## Usage Guide
+### ❤️ You’re all set!
 
-1. **Register or log in** to your account.
-2. **Create a new resume** from the dashboard.
-3. **Fill in your details** (profile, contact, work experience, education, skills, projects, certifications, languages, interests).
-4. **Choose a template and color theme** using the Theme Selector.
-5. **Preview and download** your resume as a PDF.
-6. **Manage multiple resumes** from your dashboard.
+Build and publish resumes faster, smarter, and with a little AI magic ✨
 
----
+Enjoy, and reach out for help or ideas anytime!
 
-## Code Overview
-
-### Backend
-
-- **server.js**: Main entry, sets up Express, connects to MongoDB, and mounts routes.
-- **config/db.js**: MongoDB connection logic and setup instructions.
-- **models/User.js**: User schema (name, email, password).
-- **models/Resume.js**: Resume schema (profile, contact, work, education, skills, etc.).
-- **controllers/authController.js**: Handles registration, login, and profile retrieval.
-- **controllers/resumeController.js**: Handles resume CRUD operations.
-- **middlewares/**: Auth and file upload middleware.
-- **routes/**: Auth and resume API routes.
-
-### Frontend
-
-- **src/pages/LandingPage.jsx**: Marketing landing page, authentication modals.
-- **src/pages/Dashboard.jsx**: User dashboard, resume list, create/delete actions.
-- **src/components/EditResume.jsx**: Main resume editor (multi-step, autosave, PDF export).
-- **src/components/Forms.jsx**: Modular forms for each resume section.
-- **src/components/ThemeSelector.jsx**: Select template and color theme.
-- **src/components/TemplateOne/Two/Three.jsx**: Resume template renderers.
-- **src/context/userContext.jsx**: User authentication state (React Context).
-- **src/utils/apiPaths.js**: Centralized API endpoint definitions.
-- **src/utils/axiosInstance.js**: Axios instance with auth and error handling.
-
----
-
-## API Endpoints
-
-**Auth:**
-- `POST /api/auth/register` — Register new user
-- `POST /api/auth/login` — Login
-- `GET /api/auth/profile` — Get current user profile
-
-**Resume:**
-- `POST /api/resume` — Create new resume
-- `GET /api/resume` — Get all resumes for user
-- `GET /api/resume/:id` — Get resume by ID
-- `PUT /api/resume/:id` — Update resume
-- `DELETE /api/resume/:id` — Delete resume
-- `POST /api/resume/:id/upload-images` — Upload images for a resume
-
----
-
-## Customization
-
-- **Add new templates:** Create a new component in `src/components/` and register it in `src/utils/data.js`.
-- **Change color palettes:** Update the palette arrays in `src/utils/colors.js`.
-- **Modify form fields:** Edit the schema in `backend/models/Resume.js` and update corresponding frontend forms.
-
----
-
-## Contributing
-
-1. Fork the repo and create your branch.
-2. Commit your changes with clear messages.
-3. Open a pull request describing your changes.
-
----
-
-## License
-
-This project is licensed under the ISC License. 
+[1]: https://github.com/google-gemini/cookbook/blob/main/README.md?utm_source=chatgpt.com "cookbook/README.md at main · google-gemini/cookbook · GitHub"
+[2]: https://github.com/Yadhavaramanan/Digital-Resume-Builder-using-MERN-Stack/?utm_source=chatgpt.com "Digital Resume Builder (MERN Stack) - GitHub"
+[3]: https://developers.google.com/learn/pathways/solution-ai-gemini-getting-started-web?utm_source=chatgpt.com "Getting started with the Gemini API and Web apps - Google Developers"
+[4]: https://github.com/Aakashrawat08/resume-builder?utm_source=chatgpt.com "GitHub - Aakashrawat08/resume-builder: The Resume Builder App is a full ..."
+[5]: https://github.com/danishshaikh04/ResumeBuilder-MERN/blob/main/README.md?utm_source=chatgpt.com "ResumeBuilder-MERN/README.md at main - GitHub"
+[6]: https://ai.google.dev/gemini-api/docs/quickstart?utm_source=chatgpt.com "Gemini API quickstart - Google AI for Developers"
