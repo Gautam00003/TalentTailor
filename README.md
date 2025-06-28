@@ -82,15 +82,8 @@ ResumeXpert/
    npm install
    ```
 
-2. **Configure environment variables:**
-   - Create a `.env` file in `backend/` with your MongoDB URI and JWT secret:
-     ```
-     MONGO_URI=your_mongodb_connection_string
-     JWT_SECRET=your_jwt_secret
-     ```
-   - See `backend/config/db.js` for detailed MongoDB Atlas setup instructions.
 
-3. **Start the backend server:**
+2. **Start the backend server:**
    ```bash
    npm start
    ```
