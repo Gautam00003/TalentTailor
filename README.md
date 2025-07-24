@@ -6,8 +6,8 @@ Here’s a polished, 🎨 visually appealing README for your project integration
 # 🚀 MERN AI Resume Builder with Gemini Integration
 
 **MERN** + **Google Gemini** = the ultimate AI-powered resume builder! 💼✨
-**Frontend Code** -- https://github.com/Gaurav-Lodhi10/ResumeXpert-frontend/
-**Backend Code** -- https://github.com/Gaurav-Lodhi10/ResumeXpert-Backend/
+**Frontend Code** -- https://github.com/Gautam-mali/ResumeXpert-frontend/
+**Backend Code** -- https://github.com/Gautam-mali/ResumeXpert-Backend/
 ---
 
 ## 🧭 Table of Contents
